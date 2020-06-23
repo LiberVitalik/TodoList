@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'SansPro Regular';
+    src: url(../fonts/sourcesanspro/sourcesanspro-regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'SansPro Bold';
+    src: url(../fonts/sourcesanspro/sourcesanspro-bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'SansPro Semibold';
+    src: url(../fonts/sourcesanspro/sourcesanspro-semibold.ttf) format('truetype');
+}
