@@ -20,6 +20,10 @@ export const BlockContainer = styled.div`
     margin: 0 auto;
 `;
 
+export const Flex = styled.div`
+    display: flex;
+`;
+
 export const Overlay = styled.div`
     position: fixed;
     width: 100vw;
@@ -30,13 +34,10 @@ export const Overlay = styled.div`
     background: rgba(0, 0, 0, 0.7);
 `;
 
-export const Text = styled.p`
+export const TodoTextStyles = css`
     font-family: ${SansPro.regular};
     color: ${ColorPalette.Primary.Gray[ 800]};
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: 28px;
-    text-align: center;
+    font-size: 16px;
 `;
 
 export const Ellipsis = (maxWidth) => {

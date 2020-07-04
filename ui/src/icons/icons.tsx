@@ -18,7 +18,7 @@ export class Icons {
     );
 
     public static ChevronOk = () => (
-        <svg width="24px" height="24px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <svg width="32px" height="32px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M235.1 386.3c-5.7 0-11.1-2.4-14.9-6.6l-104.1-116c-7.4-8.2-6.7-20.9 1.5-28.2 8.2-7.4 20.9-6.7 28.2 1.5l86.8 96.8 131.6-199.1c6.1-9.2 18.5-11.7 27.7-5.7 9.2 6.1 11.7 18.5 5.7 27.7L251.8 377.4c-3.4 5.2-9 8.5-15.2 8.9h-1.5z"
                 fill="#000"/>
@@ -26,7 +26,7 @@ export class Icons {
     );
 
     public static CloseIcon = () => (
-        <svg width="24px" height="24px" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+        <svg width="16px" height="16px" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M14.06 13L24.78 2.28a.75.75 0 10-1.06-1.06L13 11.94 2.28 1.22a.75.75 0 10-1.06 1.06L11.94 13 1.22 23.72a.75.75 0 101.06 1.06L13 14.06l10.72 10.72a.747.747 0 001.06 0 .75.75 0 000-1.06L14.06 13z"
                 fill="#000"/>
@@ -34,7 +34,7 @@ export class Icons {
     );
 
     public static Pencil = () => (
-        <svg width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path
                 d="M51.2 353.28L0 512l158.72-51.2zM87.16 316.492L336.96 66.69l108.61 108.61L195.77 425.102zM504.32 79.36L432.64 7.68c-10.24-10.24-25.6-10.24-35.84 0l-23.04 23.04 107.52 107.52 23.04-23.04c10.24-10.24 10.24-25.6 0-35.84z"/>
         </svg>

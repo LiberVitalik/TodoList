@@ -1,85 +1,38 @@
-import React, { useState } from 'react';
-import { EditField, TodoStyled } from './todo.style';
-import { bindActionCreators } from 'redux';
-import { removeTodo, saveTodo, updateTodos } from '../../store/actions/todos.actions';
-import { connect } from 'react-redux';
-import { Popover } from '../popover/popover';
-import { Icons } from '../../icons/icons';
-import { CardControlPanel } from '../card-control-panel/card-control-panel';
+import React, { useState, useEffect } from 'react';
+import { EditField, TodoStyled, TodoContent, TodoText } from './todo.style';
+import CardControlPanel from '../card-control-panel/card-control-panel';
 
 const Todo = (props) => {
-    const { text = '', id, saveTodo, removeTodo, updateTodos } = props;
+    const { text = '' } = props;
 
     const [value, setValue] = useState(text);
     const [isEdit, toggleEdit] = useState(false);
-    const [isPopover, setPopover] = useState(false);
+    const [canSave, toggleCanSave] = useState(false);
 
-    const closeEditMode = () => {
-        toggleEdit(false);
+    const checkEditStatus = () => {
+        if (!value) {
+            toggleEdit(true)
+        }
+
+        !!value ? toggleCanSave(true) : toggleCanSave(false);
     }
 
-    const openEditMode = () => {
-        toggleEdit(true);
-    }
-
-    const saveHandler = () => {
-        closeEditMode();
-        saveTodo(id, value);
-        updateTodos();
-    }
-
-    const removeTodoHandler = () => {
-        removeTodo(id);
-        setPopover(false);
-    }
-
-    const togglePopover = () => {
-        setPopover(!isPopover);
-    }
+    useEffect(() => {
+        checkEditStatus();
+    });
 
     return (
         <>
             <TodoStyled>
-                {!isEdit ? <div>{value}</div> : (
-                    <EditField value={value} onChange={(e) => setValue(e.target.value)} />
-                )}
-
-                <CardControlPanel>
-                    <button onClick={saveHandler}>
-                        <Icons.ChevronOk />
-                    </button>
-                    <button onClick={openEditMode}>
-                        <Icons.Pencil />
-                    </button>
-                    <Popover isPopover={isPopover}
-                             setPopover={setPopover}
-                             clickableElement={
-                                 <button onClick={togglePopover}>
-                                     <Icons.Trash />
-                                 </button>
-                             }
-                    >
-                        <button onClick={removeTodoHandler}>
-                            Ok
-                        </button>
-                        <button onClick={togglePopover}>
-                            No
-                        </button>
-                    </Popover>
-                </CardControlPanel>
+                <TodoContent>
+                    {!isEdit ? <TodoText>{value}</TodoText> : (
+                        <EditField value={value} onChange={(e) => setValue(e.target.value)} />
+                    )}
+                </TodoContent>
+                <CardControlPanel value={value} canSave={canSave} isEdit={isEdit} toggleEdit={toggleEdit} {...props} />
             </TodoStyled>
         </>
     )
 }
 
-const mapStateToProps = (state) => ({
-    todo: state.todo,
-});
-
-const mapDispatchToProps = dispatch => bindActionCreators({
-    saveTodo,
-    removeTodo,
-    updateTodos,
-}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Todo);
+export default Todo;
