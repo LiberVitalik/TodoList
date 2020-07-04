@@ -10,4 +10,5 @@ export const HeaderStyled = styled.div`
     left: 0;
     display: flex;
     border-bottom: 1px solid ${ColorPalette.Primary.Gray[300]};
+    background: #FFF;
 `;

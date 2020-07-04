@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { TodoStyled } from './todo.style';
+import { EditField, TodoStyled } from './todo.style';
 import { bindActionCreators } from 'redux';
 import { removeTodo, saveTodo, updateTodos } from '../../store/actions/todos.actions';
 import { connect } from 'react-redux';
 import { Popover } from '../popover/popover';
+import { Icons } from '../../icons/icons';
+import { CardControlPanel } from '../card-control-panel/card-control-panel';
 
 const Todo = (props) => {
     const { text = '', id, saveTodo, removeTodo, updateTodos } = props;
@@ -39,23 +41,32 @@ const Todo = (props) => {
         <>
             <TodoStyled>
                 {!isEdit ? <div>{value}</div> : (
-                    <input
-                        type="text" value={value} onChange={(e) => setValue(e.target.value)}
-                    />
+                    <EditField value={value} onChange={(e) => setValue(e.target.value)} />
                 )}
 
-
-                <button onClick={saveHandler}>Save</button>
-                <button onClick={openEditMode}>edit</button>
-                <Popover isPopover={isPopover}
-                         setPopover={setPopover}
-                         clickableElement={
-                             <button onClick={togglePopover}>remove</button>
-                         }
-                >
-                    <button onClick={removeTodoHandler}>YES</button>
-                    <button onClick={togglePopover}>NO</button>
-                </Popover>
+                <CardControlPanel>
+                    <button onClick={saveHandler}>
+                        <Icons.ChevronOk />
+                    </button>
+                    <button onClick={openEditMode}>
+                        <Icons.Pencil />
+                    </button>
+                    <Popover isPopover={isPopover}
+                             setPopover={setPopover}
+                             clickableElement={
+                                 <button onClick={togglePopover}>
+                                     <Icons.Trash />
+                                 </button>
+                             }
+                    >
+                        <button onClick={removeTodoHandler}>
+                            Ok
+                        </button>
+                        <button onClick={togglePopover}>
+                            No
+                        </button>
+                    </Popover>
+                </CardControlPanel>
             </TodoStyled>
         </>
     )
