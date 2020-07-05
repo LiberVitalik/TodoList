@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ContentStyled } from './content.style';
 
-export const Content = ({ children }) => {
+export interface IContent {
+    children: ReactNode;
+}
+
+export const Content = (props: IContent) => {
+
+    const { children } = props;
+
     return (
         <>
             <ContentStyled>

@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { EditField, TodoStyled, TodoContent, TodoText } from './todo.style';
 import CardControlPanel from '../card-control-panel/card-control-panel';
+import { ITodo } from '../../store/types/types';
 
-const Todo = (props) => {
+export interface ITodoId {
+    id: number | string;
+}
+
+
+const Todo = (props: ITodo) => {
     const { text = '' } = props;
 
     const [value, setValue] = useState(text);

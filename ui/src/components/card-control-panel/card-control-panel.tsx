@@ -5,8 +5,20 @@ import { Popover } from '../popover/popover';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { removeTodo, saveTodo, updateTodos } from '../../store/actions/todos.actions';
+import { ITodoId } from '../todo/todo';
 
-const CardControlPanel = props => {
+export interface ICardControlPanel {
+    value: string;
+    isEdit: boolean;
+    canSave: boolean;
+    toggleEdit: (isEdit: boolean) => void;
+    saveTodo: (id: ITodoId, value?: string) => void;
+    removeTodo: (id: ITodoId) => void;
+    updateTodos: () => void;
+    id: ITodoId;
+}
+
+const CardControlPanel = (props: ICardControlPanel) => {
 
     const { value, isEdit, canSave, toggleEdit, id, saveTodo, removeTodo, updateTodos } = props;
 

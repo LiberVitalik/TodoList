@@ -6,8 +6,14 @@ import { TodoList } from '../todo-list/todo-list';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addTodo } from '../../store/actions/todos.actions';
+import { ITodos } from '../../store/types/types';
 
-const Main = (props) => {
+export interface IMain {
+    todos: ITodos,
+    addTodo: () => void;
+}
+
+const Main = (props: IMain) => {
 
     const { addTodo, todos } = props;
 
